@@ -1,0 +1,26 @@
+[
+    {
+        "student_id": 2,
+        "name": "hema shree",
+        "cgpa": 9.93,
+        "marks": 95,
+        "branch": " cse-ai",
+        "section": " b"
+    },
+    {
+        "student_id": 3,
+        "name": "shanvi",
+        "cgpa": 9.92,
+        "marks": 88,
+        "branch": " ece",
+        "section": " c"
+    },
+    {
+        "student_id": 4,
+        "name": "hema",
+        "cgpa": 9.93,
+        "marks": 100,
+        "branch": "CSE",
+        "section": "A"
+    }
+]
