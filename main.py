@@ -4,108 +4,118 @@ from student_manager import StudentManager
 
 manager = StudentManager()
 
+try:
 
-while True:
+    while True:
 
-    print("\n===== STUDENT MANAGEMENT SYSTEM =====")
-    print("1. Add Student")
-    print("2. View Students")
-    print("3. Search Student")
-    print("4. Update Student")
-    print("5. Delete Student")
-    print("6. Exit")
-
-    try:
-        choice = int(input("Enter your choice: "))
-
-    except ValueError:
-        print("Please enter a valid number")
-        continue
-
-    if choice == 1:
+        print("\n===== STUDENT MANAGEMENT SYSTEM =====")
+        print("1. Add Student")
+        print("2. View Students")
+        print("3. Search Student")
+        print("4. Update Student")
+        print("5. Delete Student")
+        print("6. Exit")
 
         try:
-            student_id = int(input("Enter Student ID: "))
-            name = input("Enter Name: ").strip()
-            cgpa = float(input("Enter CGPA: "))
-            marks = int(input("Enter Marks: "))
-            branch = input("Enter Branch: ").strip()
-            section = input("Enter Section: ").strip()
-
-            student = Student(
-                student_id, name, cgpa, marks, branch, section
-            )
-
-            manager.add_student(student)
+            choice = int(input("Enter your choice: "))
 
         except ValueError:
-            print("Invalid input. Please enter the correct values.")
+            print("Please enter a valid number")
+            continue
 
-    elif choice == 2:
-        manager.view_students()
+        # 1. Add Student
+        if choice == 1:
 
-    elif choice == 3:
+            try:
+                student_id = int(input("Enter Student ID: "))
+                name = input("Enter Name: ").strip()
+                cgpa = float(input("Enter CGPA: "))
+                marks = int(input("Enter Marks: "))
+                branch = input("Enter Branch: ").strip()
+                section = input("Enter Section: ").strip()
 
-        try:
-            student_id = int(input("Enter Student ID: "))
-            manager.search_student(student_id)
+                student = Student(
+                    student_id, name, cgpa, marks, branch, section
+                )
 
-        except ValueError:
-            print("Please enter a valid student ID")
+                manager.add_student(student)
 
-    elif choice == 4:
+            except ValueError:
+                print("Invalid input. Please enter the correct values.")
 
-        try:
-            student_id = int(input("Enter Student ID: "))
+        # 2. View Students
+        elif choice == 2:
+            manager.view_students()
 
-            print("\n1. Update Name")
-            print("2. Update CGPA")
-            print("3. Update Marks")
-            print("4. Update Branch")
-            print("5. Update Section")
+        # 3. Search Student
+        elif choice == 3:
 
-            update_choice = int(input("Enter your choice: "))
+            try:
+                student_id = int(input("Enter Student ID: "))
+                manager.search_student(student_id)
 
-            fields = {
-                1: "name",
-                2: "cgpa",
-                3: "marks",
-                4: "branch",
-                5: "section"
-            }
+            except ValueError:
+                print("Please enter a valid student ID")
 
-            if update_choice not in fields:
-                print("Invalid choice")
-                continue
+        # 4. Update Student
+        elif choice == 4:
 
-            field = fields[update_choice]
+            try:
+                student_id = int(input("Enter Student ID: "))
 
-            if field == "name" or field == "branch" or field == "section":
-                new_value = input("Enter new value: ").strip()
+                print("\n1. Update Name")
+                print("2. Update CGPA")
+                print("3. Update Marks")
+                print("4. Update Branch")
+                print("5. Update Section")
 
-            elif field == "cgpa":
-                new_value = float(input("Enter new CGPA: "))
+                update_choice = int(input("Enter your choice: "))
 
-            else:
-                new_value = int(input("Enter new marks: "))
+                fields = {
+                    1: "name",
+                    2: "cgpa",
+                    3: "marks",
+                    4: "branch",
+                    5: "section"
+                }
 
-            manager.update_student(student_id, field, new_value)
+                if update_choice not in fields:
+                    print("Invalid choice")
+                    continue
 
-        except ValueError:
-            print("Invalid input")
+                field = fields[update_choice]
 
-    elif choice == 5:
+                if field in ["name", "branch", "section"]:
+                    new_value = input("Enter new value: ").strip()
 
-        try:
-            student_id = int(input("Enter Student ID: "))
-            manager.delete_student(student_id)
+                elif field == "cgpa":
+                    new_value = float(input("Enter new CGPA: "))
 
-        except ValueError:
-            print("Please enter a valid student ID")
+                else:
+                    new_value = int(input("Enter new marks: "))
 
-    elif choice == 6:
-        print("Thank you for using Student Management System!")
-        break
+                manager.update_student(student_id, field, new_value)
 
-    else:
-        print("Invalid choice. Please try again.")
+            except ValueError:
+                print("Invalid input")
+
+        # 5. Delete Student
+        elif choice == 5:
+
+            try:
+                student_id = int(input("Enter Student ID: "))
+                manager.delete_student(student_id)
+
+            except ValueError:
+                print("Please enter a valid student ID")
+
+        # 6. Exit
+        elif choice == 6:
+            print("Thank you for using Student Management System!")
+            break
+
+        else:
+            print("Invalid choice. Please try again.")
+
+finally:
+    manager.close()

@@ -1,7 +1,6 @@
 # 🎓 Student Management System
 
-A Python-based Student Management System that performs CRUD
-(Create, Read, Update, Delete) operations with JSON storage.
+A Python-based Student Management System built using Object-Oriented Programming (OOP) and SQLite. It allows users to manage student records through CRUD (Create, Read, Update, Delete) operations with persistent database storage.
 
 ## ✨ Features
 
@@ -12,25 +11,29 @@ A Python-based Student Management System that performs CRUD
 - Delete Student
 - Duplicate Student ID Validation
 - Input Validation
-- Persistent Data Storage using JSON
+- Persistent Data Storage using SQLite
+- Database Error Handling
 
 ## 🛠️ Technologies Used
 
 - Python
-- JSON
-- File Handling
+- Object-Oriented Programming (OOP)
+- SQLite
+- SQL
+- Git and GitHub
 
 ## 📁 Project Structure
 
 ```text
 Student-Management-System/
 │
-├── student_management.py
-├── README.md
-└── .gitignore
+├── main.py
+├── student.py
+├── student_manager.py
+├── database.py
+├── .gitignore
+└── README.md
 ```
-
-**Note:** `students.json` is created locally when student data is saved. It is excluded from Git to avoid publishing student records.
 
 ## ▶️ How to Run
 
@@ -49,15 +52,18 @@ cd Student-Management-System
 ### 3. Run the application
 
 ```bash
-python student_management.py
+python main.py
 ```
+
+The SQLite database and students table are created automatically when the application starts.
 
 ## 🚀 Future Improvements
 
-- Implement Object-Oriented Programming (OOP)
-- Integrate SQLite or MySQL
 - Build a web application using Flask
+- Develop REST APIs for student management
 - Add user authentication
+- Migrate to PostgreSQL
+- Add automated testing
 - Export student data to CSV
 
 ## 👩‍💻 Author
